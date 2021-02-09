@@ -1,24 +1,25 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <title>Hard Rock Solution - Home</title>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hard Rock Solution - Album </title>
     <!-- Favicon -->
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <!-- Custom css -->
     <link rel="stylesheet" href="style.css">
+
 </head>
 
 <body>
     <div class="container">
         <nav class="navbar  navbar-dark my-3">
-            <a class="navbar-brand" href="#">
-                <img style="width: 50px; height: 50px;" src="images/logo.png" alt="Hard Rock Solution">
+            <a class="navbar-brand" href="index.html">
+                <img src="images/logo.png" alt="Hard Rock Solution">
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavId"
                 aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation">
@@ -46,35 +47,24 @@
                 </ul>
             </div>
         </nav>
-
         <main class="content-area">
             <div class="search-bar col-md-6 mx-auto">
-                <h1 class="text-center text-success" >Hard Rock Music Search</h1>
+                <h1 class="text-center">Hard Rock Album Search</h1>
                 <div class="search-box my-5">
-                    <input type="text" class="form-control" placeholder="Enter your artist song name" id="input-field">
-                    <button class="btn btn-success search-btn" onclick="searchSong()">Search</button>
+                    <input type="text" class="form-control" placeholder="Enter your artist Album name" id="input-field">
+                    <button class="btn btn-success search-btn" onclick="searchAlbum()">Search</button>
                 </div>
-            </div>
-            <div class="alert alert-danger" id="errorMsg" role="alert">
-               <p id="error"></p>
-              </div>
-            <!-- Single Lyrics -->
-            <div class="modal-dialog" id="lyricsContainer">
-
-            </div>
-            <div class="search-result col-md-8 mx-auto py-4" id="searchResult">
-
             </div>
         </main>
     </div>
+
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-
     <!-- Custom Script Here -->
-    <script src="song.js"></script>
+    <script src="Album.js"></script>
 </body>
 
 </html>

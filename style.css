@@ -4,8 +4,9 @@ body{
     background-image: url(images/bg-image.png);
     background-repeat: no-repeat;
     background-size: 100%;
-    background-position: top;
+    background-position: center;
     background-attachment: fixed;
+
 }
 
 .form-control{
@@ -38,4 +39,17 @@ body{
 .single-result{
     background: rgba(255, 255, 255, 0.2);
     border-radius: 15px;
+}
+.dropdown-menu-bg{
+    background-color: transparent;
+}
+.dropdown-menu-bg a{
+    color: white;
+}
+#errorMsg{
+    display: none;
+}
+audio:focus{
+    outline: none;
+    color: yellow;
 }

@@ -1,13 +1,26 @@
 const searchSong = async () => {
     const inputField = document.getElementById('input-field').value;
-    const url = `https://api.lyrics.ovh/suggest/${inputField}`
-    try {
-        const res = await fetch(url);
-        const data = await res.json();
-        songDisplay(data.data);
-    } catch (error) {
-        console.log(error);
+    if(inputField == ''){
+        document.getElementById('errorMsg').style.display = 'Block'
+        document.getElementById('error').innerText = 'Try to Search Somthing  by Valid Value'
     }
+    else {
+        try {
+            const url = `https://api.lyrics.ovh/suggest/${inputField}`
+            const songContainer = document.getElementById('searchResult')
+            songContainer.innerHTML = ''
+            const res = await fetch(url);
+            const data = await res.json();
+            document.getElementById('errorMsg').style.display = 'none'
+            songDisplay(data.data);
+        } catch (error) {
+            errorShow(error)
+        }
+    }
+}
+const errorShow = (error) => {
+    document.getElementById('errorMsg').style.display = 'block'
+    document.getElementById('error').innerText = error;
 }
 
 const songDisplay = songs => {
@@ -21,7 +34,7 @@ const songDisplay = songs => {
         <div class="col-md-9">
             <h3 class="lyrics-name">${song.title}</h3>
             <p class="author lead">Album by <span>${song.artist.name}</span></p>
-            <audio controls>
+            <audio controls muted>
                 <source src="${song.preview}" type="audio/ogg">
             </audio>
         </div>
@@ -36,10 +49,15 @@ const songDisplay = songs => {
 
 
 const getLyrics = async (title, artist) => {
-    const url = `https://api.lyrics.ovh/v1/${artist}/${title}`;
-    const res = await fetch(url);
-    const data = await res.json();
-    displayLyric(data);
+    try {
+        const url = `https://api.lyrics.ovh/v1/${artist}/${title}`;
+        const res = await fetch(url);
+        const data = await res.json();
+        displayLyric(data);
+
+    } catch (error) {
+        errorShow(error);
+    }
 }
 
 const displayLyric = (data) => {
