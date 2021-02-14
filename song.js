@@ -1,6 +1,6 @@
 const searchSong = async () => {
     const inputField = document.getElementById('input-field').value;
-    if(inputField == ''){
+    if (inputField == '') {
         document.getElementById('errorMsg').style.display = 'Block'
         document.getElementById('error').innerText = 'Try to Search Somthing  by Valid Value'
     }
@@ -9,6 +9,7 @@ const searchSong = async () => {
             const url = `https://api.lyrics.ovh/suggest/${inputField}`
             const songContainer = document.getElementById('searchResult')
             songContainer.innerHTML = ''
+            toggleLoading(true)
             const res = await fetch(url);
             const data = await res.json();
             document.getElementById('errorMsg').style.display = 'none'
@@ -18,6 +19,7 @@ const searchSong = async () => {
         }
     }
 }
+
 const errorShow = (error) => {
     document.getElementById('errorMsg').style.display = 'block'
     document.getElementById('error').innerText = error;
@@ -45,6 +47,7 @@ const songDisplay = songs => {
         `
         songContainer.appendChild(songDiv);
     })
+    toggleLoading(false);
 }
 
 
@@ -64,4 +67,13 @@ const displayLyric = (data) => {
     const lyricDiv = document.getElementById('lyricsContainer');
     lyricDiv.style.display = 'block'
     lyricDiv.innerText = data.lyrics;
+}
+
+const toggleLoading = (show) => {
+    const spinner = document.getElementById('loading-spinner')
+    if (show === true) {
+        spinner.classList.remove('d-none')
+    } else {
+        spinner.classList.add('d-none')
+    }
 }

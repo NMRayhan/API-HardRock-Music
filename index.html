@@ -49,15 +49,22 @@
 
         <main class="content-area">
             <div class="search-bar col-md-6 mx-auto">
-                <h1 class="text-center text-success" >Hard Rock Music Search</h1>
+                <h1 class="text-center text-success">Hard Rock Music Search</h1>
                 <div class="search-box my-5">
                     <input type="text" class="form-control" placeholder="Enter your artist song name" id="input-field">
                     <button class="btn btn-success search-btn" onclick="searchSong()">Search</button>
                 </div>
             </div>
+            <!-- spinner -->
+            <div class="d-flex justify-content-center">
+                <div id="loading-spinner" class="spinner-border text-warning d-none" role="status">
+                    <span class="visually-hidden"></span>
+                </div>
+            </div>
+
             <div class="alert alert-danger" id="errorMsg" role="alert">
-               <p id="error"></p>
-              </div>
+                <p id="error"></p>
+            </div>
             <!-- Single Lyrics -->
             <div class="modal-dialog" id="lyricsContainer">
 
