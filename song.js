@@ -14,15 +14,17 @@ const searchSong = async () => {
             const data = await res.json();
             document.getElementById('errorMsg').style.display = 'none'
             songDisplay(data.data);
-        } catch (error) {
-            errorShow(error)
+        } catch {
+            toggleLoading(true)
+            errorShow()
         }
     }
 }
 
-const errorShow = (error) => {
+const errorShow = () => {
     document.getElementById('errorMsg').style.display = 'block'
-    document.getElementById('error').innerText = error;
+    document.getElementById('error').innerText = "Somthing Wents Wrong. please Try Again Later";
+    toggleLoading(false)
 }
 
 const songDisplay = songs => {
@@ -54,19 +56,28 @@ const songDisplay = songs => {
 const getLyrics = async (title, artist) => {
     try {
         const url = `https://api.lyrics.ovh/v1/${artist}/${title}`;
+        toggleLoading(true)
         const res = await fetch(url);
         const data = await res.json();
         displayLyric(data);
 
-    } catch (error) {
-        errorShow(error);
+    } catch {
+        toggleLoading(true)
+        lyricError();
     }
+}
+
+const lyricError = () =>{
+    document.getElementById('errorMsg').style.display = 'block'
+    document.getElementById('error').innerText = "This Song Lyrics Not Found";
+    toggleLoading(false)
 }
 
 const displayLyric = (data) => {
     const lyricDiv = document.getElementById('lyricsContainer');
     lyricDiv.style.display = 'block'
     lyricDiv.innerText = data.lyrics;
+    toggleLoading(false)
 }
 
 const toggleLoading = (show) => {
